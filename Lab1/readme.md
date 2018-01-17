@@ -1,4 +1,4 @@
-# Linux básico y GCC #
+# Linux básico #
 
 
 
@@ -10,6 +10,11 @@
 > * PC con Linux
 > * Compilador GCC
 > * Editor de texto o IDE
+
+## Notas de utilidad ##
+En internet se encuentran innumerables recursos para simular el comportamiento de la terminal algunos de utilidad son:
+* [Unix Terminal Online](https://www.tutorialspoint.com/unix_terminal_online.php) 
+* [learnshell.org](http://www.learnshell.org/)
 
 ## 1. Introducción al manejo de la consola GNU/Linux ##
 ### ¿Qué es la consola? ###
@@ -159,7 +164,7 @@ La Figura 5 muestra un ejemplo del uso del comando mkdir. Para mayor informació
 
 Figura xxx
 
-### 3.4. Borrar Archivos y Directorios
+### 3.5. Borrar Archivos y Directorios
 ```
 rm <opc> ruta/archivo
 ```
@@ -172,4 +177,88 @@ Si se quiere borrar un directorio en Linux, se puede hacer uso del comando ```rm
 | -i   | 	Para **pedir confirmación** por cada archivo borrado                  |
 
 La Figura XXXX muestra un ejemplo del uso del comando rm. Para mayor información puede consultar el manual del comando: ```man rm```.
+
+### 3.6. Copiar Archivos y Directorios
+Para copiar directorios y archivos se puede usar el comando ```cp```. La siguiente tabla describe las principales formas de uso de este comando:
+
+| Forma de uso | Descripcion                                                            |
+|---------|--------------------------------------------------------------------|
+| cp <source_file> <target_file> | Copia el archivo fuente (source_file) al destino (target_file) |
+| cp file1 file2 file3 ... dir   | Copia los archivos al directorio target (ultimo argumento)  |
+| cp -­i  | (Copiado interactivo) Espera por la confirmacion del usuario si el archivo destino (target) ya existe  |
+| cp ­-r <source_dir> <target_dir>  | (Copiado recursivo) Copia el directorio entero  |
+
+La Figura XXX muestra un ejemplo del uso del comando cp. Para mayor información puede consultar el manual del comando: ```man cp```.
+
+Figura XXX
+
+#### Ejemplos
+Como se Realizarian las siguientes operaciones empleando el comando cp:
+1. Realizar la copia de un archivo y dejar la copia en el mismo directorio que el original.
+```cp  ArchivoOriginal  ArchivoCopia```
+2. Para realizar lo mismo pero con directorios y de forma recursiva
+```cp  -r  CarpetaOriginal/  CarpetaCopia/```
+3. Se puede especificar que la copia se ponga en otro lugar distinto al de origen
+```cp  ArchivoOriginal  /ruta/ArchivoCopia```
+4. Obviamente se puede hacer lo mismo con carpetas
+```cp  -r  CarpetaOriginal  /ruta/CarpetaCopia```
+
+
+### 3.7. Mover/Renombrar Archivos y Directorios
+Mover archivos y directorios en la terminal equivale a cortar y pegar en modo gráfico; por otro lado, renombrar archivos y directorios equivale a **Cambiar nombre** en entorno gráfico. Nosotros podemos lograr estas dos cosas con el comando ```mv```. La forma de uso básica de este comando se muestra a continuación:
+```
+mv source_file dest_file
+```
+La Figura XXX muestra un ejemplo del uso del comando mv. Para mayor información puede consultar el manual del comando: ```man mv```.
+
+Figura XXX
+
+#### Ejemplos
+Como se Realizarian las siguientes operaciones empleando el comando mv:
+1. Mover archivo a un directorio especifico.
+```mv ArchivoOrigen /LugarDeDestino/ArchivoDestino```
+2. Renombrar una carpeta y dejarla en el mismo lugar
+```mv NombreOriginal NombreNuevo```
+
+3.8. Buscar Archivos y Directorios - Forma 1
+El comando ```find``` es usado para buscar archivos o directorios en el sistema de archivos del computador. Este comando tiene diversos modificadores, por lo general la búsqueda mediante terminal es más rápida y consume menos recursos que la búsqueda mediante una aplicación gráfica. A continuación se explican dos opciones del comando:
+1. Buscar por nombre: find  /lugar_busqueda/ -name nombre_archivo
+```find  /lugar_busqueda/ -name nombre_archivo ```
+2. Buscar por tamaño: find  /lugar_busqueda/ -size tamañokb
+```find  /lugar_busqueda/ -size tamañokb ```
+
+La Figura XXX muestra un ejemplo del uso del comando ```find```. Para mayor información puede consultar el manual del comando: ```man find```.
+
+Figura XXX
+
+#### Ejemplos
+Como se Realizarian las siguientes operaciones empleando el comando mv:
+1. Busqueda por nombre.
+```find /home/usuario/ -name Archivo.tar.gz```
+2. Busqueda por tamaño: Buscar archivos de más de 500 KB
+```find  /home/usuario/ -size +500```
+
+### 3.9. Buscar Archivos y Directorios - Forma 2
+El comando ```locate``` permite encontrar, a través de un nombre o parte de él, la ruta de un archivo dentro del sistema de archivos. El comando locate depende de una base de datos de archivos que se crea con el comando ```updatedb```, el cual crea o actualiza una base de datos con información de todos los archivos en el sistema. ```locate``` no puede encontrar archivos que son creados posteriormente al último llamado de la función ```updatedb```. Antes de efectuar operaciones de búsqueda con locate es bueno actualizar la base de datos. Por ejemplo si quiero encontrar la ruta al archivo ***documento1.txt*** la secuencia de comando sería:
+```
+sudo updatedb 
+locate documento1.tx
+```
+### 3.10. Limpiar la Terminal
+Después de usar un buen tiempo la terminal, es probable que nos encontremos confundidos por el texto que se encuentra desplegado en la terminal. Para limpiar la ventana podemos hacer uso del comando ```clear```. 
+
+
+## 4. Ejercicios de evaluacion:
+1. Las preguntas teoricas dentro de lo demas XXXXXX
+2. Apoyandose en los documentos [Summary of most useful commands](https://free-electrons.com/doc/legacy/command-line/command_memento.pdf) y [The Unix and  GNU/Linux  command line](https://free-electrons.com/doc/legacy/command-line/unix_linux_introduction.pdf) hacer una breve descripción con ejemplos de los comandos asignados por el docente del curso. Si es neceseario apoyese en el manual o en recursos de internet para dar un ejemplo claro. El objetivo es mejorar la información contenida en esta pagina con lo consultado por usted para mejorar la guia a futuro.
+3. Realizar el curso: [Introduction to Shell for Data Science](https://www.datacamp.com/courses/introduction-to-shell-for-data-science).
+4. Punto de bonus: resolver los ejercicios de la pagina [learnshell.org](http://www.learnshell.org/)
+
+## 5. Referencias
+* (https://free-electrons.com/doc/legacy/command-line/unix_linux_introduction.pdf
+* https://free-electrons.com/doc/legacy/command-line/command_memento.pdf
+* https://www.datacamp.com/community/tutorials/shell-commands-data-scientist
+* https://www.dropbox.com/s/yu4es9coqbwd100/GuiaLab1.pdf?dl=0
+* http://linuxcommand.org/
+* https://autellinux.com/2013/09/04/online-simulator-in-linux-practice-linux-commands/
 
